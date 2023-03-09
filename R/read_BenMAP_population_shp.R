@@ -56,9 +56,17 @@ read_BenMAP_population_shp <- function (
       BenMAP_sex = recode_BenMAP_sex(BenMAP_sex),
       BenMAP_age = recode_BenMAP_age_5yr(BenMAP_age))
 
+  # This helps to ignore, e.g., `Total_Pop`
+  pruned_data <-
+    dplyr::filter(
+      recoded_data,
+      dplyr::if_all(
+        matches("BenMAP_"),
+        function (x) !is.na(x)))
+
   tidied_data <-
     dplyr::mutate(
-      recoded_data,
+      pruned_data,
       pop_qty = unittools::as_person(pop_qty))
 
   comment(tidied_data) <-
