@@ -7,7 +7,14 @@
 read_BenMAP_population_shp(path, crs = NULL, verbose = getOption("verbose"))
 }
 \arguments{
-\item{verbose}{}
+\item{path}{(character) can be a zipped ESRI shapefile}
+
+\item{crs}{(optional) passed to [shptools::read_shp()]}
+
+\item{verbose}{(logical)}
+}
+\value{
+tibble
 }
 \description{
 read_BenMAP_population_shp

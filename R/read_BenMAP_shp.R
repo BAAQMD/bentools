@@ -1,3 +1,12 @@
+#' read_BenMAP_shp
+#'
+#' @param path passed to [shptools::read_shp()]
+#' @param crs passed to [shptools::read_shp()]
+#' @param verbose (logical)
+#'
+#' @return `sf` object
+#'
+#' @export
 read_BenMAP_shp <- function (
     path,
     crs = NULL,
@@ -20,7 +29,7 @@ read_BenMAP_shp <- function (
 
   geo_id_var <-
     names(shp_geodata) %>%
-    purrr::keep(str_detect, "GEOID")
+    purrr::keep(stringr::str_detect, "GEOID")
 
   if (length(geo_id_var) > 0) {
     msg("geo_id_var is: ", geo_id_var)

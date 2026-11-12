@@ -1,8 +1,8 @@
 #' read_BenMAP_population_shp
 #'
-#' @param path
-#' @param crs
-#' @param verbose
+#' @param path (character) can be a zipped ESRI shapefile
+#' @param crs (optional) passed to [shptools::read_shp()]
+#' @param verbose (logical)
 #'
 #' @importFrom tibble tibble
 #' @importFrom units set_units
@@ -10,10 +10,9 @@
 #' @importFrom sf st_drop_geometry
 #' @importFrom dplyr filter mutate
 #'
-#' @return
-#' @export
+#' @return tibble
 #'
-#' @examples
+#' @export
 read_BenMAP_population_shp <- function (
     path,
     crs = NULL,
